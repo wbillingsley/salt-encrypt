@@ -2,13 +2,13 @@ name := "salt-encrypt"
 
 organization := "com.wbillingsley"
 
-version := "0.1-SNAPSHOT"
+version := "0.1"
 
-scalaVersion := "2.10.0"
+scalaVersion := "2.10.2"
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature")
 
-crossScalaVersions := Seq("2.10.0")
+crossScalaVersions := Seq("2.10.2")
 
 publishTo <<= version { (v: String) =>
   val localm = "/Users/wbillingsley/sourcecode/external/repos/mymavenrepo/"
