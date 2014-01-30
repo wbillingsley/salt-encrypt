@@ -2,7 +2,7 @@ name := "salt-encrypt"
 
 organization := "com.wbillingsley"
 
-version := "0.1-SNAPSHOT"
+version := "0.1.0-RC1"
 
 scalaVersion := "2.10.3"
 
@@ -20,12 +20,15 @@ homepage in ThisBuild := Some(url("http://github.com/wbillingsley/salt-encrypt")
 
 publishMavenStyle in ThisBuild := true
 
-publishTo in ThisBuild <<= version { (v: String) =>
+// Bintray settings for publishing releases
+seq(bintrayPublishSettings:_*)
+
+publishTo in ThisBuild := {
   val nexus = "https://oss.sonatype.org/"
-  if (v.trim.endsWith("SNAPSHOT"))
+  if (version.value.trim.endsWith("SNAPSHOT"))
     Some("snapshots" at nexus + "content/repositories/snapshots")
   else
-    Some("releases"  at nexus + "service/local/staging/deploy/maven2")
+    publishTo.value
 }
 
 pomExtra in ThisBuild := (
